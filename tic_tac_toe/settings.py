@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
+    'game'
 ]
 
 MIDDLEWARE = [
@@ -67,7 +69,15 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'tic_tac_toe.wsgi.application'
+# WSGI_APPLICATION = 'tic_tac_toe.wsgi.application'
+# Channels
+ASGI_APPLICATION = 'tic_tac_toe.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    },
+}
 
 
 # Database
@@ -118,3 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
