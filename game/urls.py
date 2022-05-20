@@ -3,6 +3,6 @@ from game.views import game, index
 
 urlpatterns = [
     ## other url routes
-    path('', index),
-    path('play/<room_code>', game),
+    path("", index),
+    path("play/<room_code>", game),
 ]
