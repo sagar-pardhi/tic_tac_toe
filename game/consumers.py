@@ -12,7 +12,7 @@ class TicTacToeConsumer(AsyncJsonWebsocketConsumer):
         await self.channel_layer.group_add(self.room_group_name, self.channel_name)
         await self.accept()
 
-    async def disconnect(self, code):
+    async def disconnect(self, close_code):
         print("Disconnected")
         await self.channel_layer.group_discard(self.room_group_name, self.channel_name)
 
@@ -43,6 +43,6 @@ class TicTacToeConsumer(AsyncJsonWebsocketConsumer):
                 {"type": "send_message", "message": message, "event": "END"},
             )
 
-        async def send_message(self, res):
-            """Receive message from room group"""
-            await self.send(text_data=json.dumps({"payload": res}))
+    async def send_message(self, res):
+        """Receive message from room group"""
+        await self.send(text_data=json.dumps({"payload": res}))

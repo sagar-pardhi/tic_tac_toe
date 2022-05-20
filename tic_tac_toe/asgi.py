@@ -9,9 +9,9 @@ https://docs.djangoproject.com/en/3.1/howto/deployment/asgi/
 
 import os
 from django.core.asgi import get_asgi_application
-from channels.http import AuthMiddlewareStack
+from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
-import game
+import game.routing
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tic_tac_toe.settings")
 # django.setup()
